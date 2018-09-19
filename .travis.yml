@@ -25,3 +25,4 @@ after_deploy:
   - git config user.email "travis@travis-ci.org"
   - git remote add origin https://${GITHUB_TOKEN}@github.com/rafaelbattesti/TerraformTutorials.git
   - git diff --quiet && git diff --staged --quiet || git commit -am "Autocommit: IaC state changed."
+  - git push --quiet --set-upstream origin master
