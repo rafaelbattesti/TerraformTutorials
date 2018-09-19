@@ -29,7 +29,7 @@ resource "aws_instance" "web" {
 
     tags {
         "Identity" = "rbattesti-test-terraform"
-        "Name"     = "RB Git-Terraform-TravisCI"
+        "Name"     = "RBattesti Git-Terraform-TravisCI"
     }
 }
 
