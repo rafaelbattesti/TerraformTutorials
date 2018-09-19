@@ -24,4 +24,4 @@ after_deploy:
   - git config user.name "Travis CI"
   - git config user.email "travis@travis-ci.org"
   - git diff --quiet && git diff --staged --quiet || git commit -am "[skip ci] Autocommit - IaC state changed."
-  - git push --quiet
+  - git push --quiet origin HEAD:$TRAVIS_BRANCH
