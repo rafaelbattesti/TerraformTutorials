@@ -32,3 +32,11 @@ resource "aws_instance" "web" {
         "Name"     = "RB Terraform Test"
     }
 }
+
+output "public_ip" {
+    value = "${aws_instance.web.public_ip}"
+}
+
+output "public_dns" {
+    value = "${aws_instance.web.public_dns}"
+}
