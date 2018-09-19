@@ -1,5 +1,21 @@
 sudo: required
 dist: trusty
 
+# Preparation
+before_install:
+  - wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
+  - unzip terraform_0.10.6_linux_amd64.zip
+
+# Validation
 script:
-  - echo "Terraform plan is passing!"
+  - ./terraform init
+  - ./terraform plan
+
+# Roll out
+deploy:
+- provider: script
+  script: 
+    - ./terraform apply
+  skip_cleanup: true
+  on:
+    branch: master
