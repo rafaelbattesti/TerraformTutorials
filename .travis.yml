@@ -3,19 +3,16 @@ dist: trusty
 
 # Preparation: non-zero generates build error
 before_install:
-  - wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
-  - unzip terraform_0.11.8_linux_amd64.zip
+  - chmod +x -R bin/
 
 # Initializes terraform workspace
 install:
-  - chmod +x *.sh
-  - ./terraform init
+  - . bin/install.sh
 
 # Validation, rollout and test: non-zero generates build failure
 script:
-  - ./terraform plan
-  - ./terraform apply -auto-approve
-  - ./test.sh
-  - ./commit.sh
+  - . bin/build.sh
+  - . bin/test.sh
+  - . bin/commit.sh
 
 # By this time, the build is a success/failure/error
