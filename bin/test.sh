@@ -18,7 +18,7 @@ while [[ $count -ne 0 ]] ; do
         ((count = 1))
         echo "${green}PASS${reset}"
     fi
-    (( count-- ))
+    ((count = count - 1))
 done
 
 if [[ $rc -ne 0 ]] ; then
