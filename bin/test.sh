@@ -43,6 +43,7 @@ else
     fail_build=1
 fi
 
+echo
 echo "total: ${total}, failed: ${failed}"
 
 if [[ fail_build -ne 0 ]] ; then
