@@ -23,13 +23,12 @@ reset=$(tput sgr0)
 
 # 1. Test public IP
 test_id="001 : Ping Public IP"
-echo "Running ICMP test for Public IP: $(terraform output public_ip)"
 ping -c 5 $(terraform output public_ip) > /dev/null 2>&1
 rc=$?
 if [[ $rc -eq 0 ]] ; then
-    echo "${green}test_id${reset}"
+    echo "${green}${test_id}${reset}"
 else
-    echo "${red}test_id${reset}"
+    echo "${red}${test_id}${reset}"
     ((failed = failed + 1))
     fail_build=1
 fi
@@ -40,9 +39,9 @@ echo "Running ICMP test for Public DNS: $(terraform output public_dns)"
 ping -c 5 $(terraform output public_dns) > /dev/null 2>&1
 rc=$?
 if [[ $rc -eq 0 ]] ; then
-    echo "${green}test_id${reset}"
+    echo "${green}${test_id}${reset}"
 else
-    echo "${red}test_id${reset}"
+    echo "${red}${test_id}${reset}"
     ((failed = failed + 1))
     fail_build=1
 fi
