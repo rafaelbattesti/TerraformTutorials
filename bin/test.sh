@@ -3,11 +3,9 @@
 set +e
 
 cat <<EOF
-
 =========================
 Infrastructure Validation
 =========================
-
 EOF
 
 
@@ -48,6 +46,7 @@ fi
 echo "total: ${total}, failed: ${failed}"
 
 if [[ fail_build -ne 0 ]] ; then
-    echo "${red}Build Failed${reset}"
+    echo
+    echo "${red}-- Build Failed --${reset}"
     exit 1
 fi
