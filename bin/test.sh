@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set +e
+
 # Output all results, but fail build if one test fails
 declare -i fail=0
 
