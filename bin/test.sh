@@ -2,7 +2,7 @@
 
 set +e
 
-echo <<EOF
+cat <<EOF
 
 =========================
 Infrastructure Validation
@@ -35,7 +35,6 @@ fi
 
 # 2. Test public DNS
 test_id="002 : Ping Public DNS"
-echo "Running ICMP test for Public DNS: $(terraform output public_dns)"
 ping -c 5 $(terraform output public_dns) > /dev/null 2>&1
 rc=$?
 if [[ $rc -eq 0 ]] ; then
