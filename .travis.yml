@@ -16,3 +16,5 @@ script:
   - . bin/commit.sh
 
 # By this time, the build is a success/failure/error
+notifications:
+  slack: indellient:LROt2AuLBuZfgmyi2RFFXZVa
