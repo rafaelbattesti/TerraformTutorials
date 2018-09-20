@@ -1,28 +1,21 @@
 sudo: required
 dist: trusty
 
-# Preparation
+# Preparation: non-zero generates build error
 before_install:
   - wget https://releases.hashicorp.com/terraform/0.11.8/terraform_0.11.8_linux_amd64.zip
   - unzip terraform_0.11.8_linux_amd64.zip
 
-# Validation
-script:
+# Initializes terraform workspace
+install:
+  - chmod +x *.sh
   - ./terraform init
+
+# Validation, rollout and test: non-zero generates build failure
+script:
   - ./terraform plan
+  - ./terraform apply -auto-approve
+  - ./test.sh
+  - ./commit.sh
 
-# Roll out
-deploy:
-- provider: script
-  script: 
-    - ./terraform apply -auto-approve
-  skip_cleanup: true
-  on:
-    branch: master
-
-after_deploy:
-  - git config user.name "Travis CI"
-  - git config user.email "travis@travis-ci.org"
-  - git remote set-url origin https://$GITHUB_TOKEN@github.com/rafaelbattesti/TerraformTutorials.git
-  - git diff --quiet && git diff --staged --quiet || git commit -am "[skip ci] Autocommit - IaC state changed."
-  - git push --quiet origin HEAD:$TRAVIS_BRANCH
+# By this time, the build is a success/failure/error
