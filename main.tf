@@ -24,6 +24,7 @@ resource "aws_security_group" "allow-icmp" {
 resource "aws_instance" "web" {
     ami                    = "ami-0ef6235c4ed871e29" # Ubuntu Trusty 14.04 amd64 hvm:ebs
     instance_type          = "t2.small"
+    key_name               = "${var.aws_keypair}"
     subnet_id              = "subnet-04b5f928"
     vpc_security_group_ids = ["${aws_security_group.allow-icmp.id}", "sg-9b9a64d3"] # Use sg-948305e4 for failed Demo
 
