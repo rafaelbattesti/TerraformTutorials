@@ -12,7 +12,6 @@ install:
 # Validation, rollout and test: non-zero generates build failure
 script:
   - . bin/build.sh
-  - . bin/test.sh
   - . bin/commit.sh
 
 # By this time, the build is a success/failure/error
