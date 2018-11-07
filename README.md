@@ -4,7 +4,7 @@
 ---
 
 #### Configuration
-1. Download extract, place, add to `PATH` and create Symlink in `/usr/bin`
+1. Download, extract, place, add to `PATH` and create Symlink in `/usr/bin`
 
 #### Resource Management
 1. `terraform init`                     - To initialize the workspace
@@ -61,3 +61,7 @@ string
 EOF
 }
 ```
+#### Long living branch: CDK on RHEL
+
+Install the CDK (Chef Development Kit) on RHEL and AWS.
+
